@@ -1,0 +1,14 @@
+global: {}
+
+route:
+  receiver: "rca-webhook"
+  group_by: ["alertname", "service"]
+  group_wait: 5s
+  group_interval: 30s
+  repeat_interval: 1m
+
+receivers:
+  - name: "rca-webhook"
+    webhook_configs:
+      - url: "http://rca-service:8002/webhook/alertmanager"
+        send_resolved: true

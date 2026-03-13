@@ -1,0 +1,15 @@
+groups:
+  - name: service-latency
+    rules:
+      - alert: ServiceBHighLatencyP95
+        expr: histogram_quantile(
+                0.95,
+                sum(rate(http_request_duration_seconds_bucket{job="service-b"}[1m])) by (le)
+              ) > 1
+        for: 30s
+        labels:
+          severity: page
+          service: service-b
+        annotations:
+          summary: "Service B p95 latency is high"
+          description: "p95 latency for service-b is > 1s for 30s"
