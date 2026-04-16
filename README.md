@@ -1,4 +1,4 @@
-# AI Incident Root Cause Analyzer
+# Incident Root Cause Analyzer
 
 An observability-driven system that automatically analyzes service failures and identifies the most likely root cause using telemetry signals from a distributed microservice environment.
 
